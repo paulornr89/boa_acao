@@ -14,18 +14,11 @@ class DoadorController extends Controller
     }
 
     public function index() {
-        return response()->json(Doador::all());
-        //return view('doadores', ['doadores' => $this->doador->all()]);
+        //return response()->json(Doador::all());
+        return view('doadores', ['doadores' => $this->doador->all()]);
     }
 
     public function show($id) {
-        $doador = Doador::find($id);
-        if ($doador) {
-            return response()->json($doador);
-            //return view('doador', ['doador' => $doador]);
-        } else {
-            return response()->json(['message' => 'Doador não encontrado'], 404);
-            //return redirect('/doadores')->with('error', 'Doador não encontrado');
-        }
+        return view('doador', ['doador' => $this->doador->find($id)]);
     }
 }

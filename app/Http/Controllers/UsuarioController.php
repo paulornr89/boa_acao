@@ -14,12 +14,12 @@ class UsuarioController extends Controller
     }
 
     public function index() {
-        return response()->json($this->usuario->all());//retorna todos os usuarios em json
-        // return view('usuarios', ['usuarios' => $this->usuario->all()]);
+        //return response()->json($this->usuario->all());//retorna todos os usuarios em json
+        return view('usuarios', ['usuarios' => $this->usuario->all()]);
     }
 
     public function show($id) {
-        return response()->json($this->usuario->find($id));
-        // return view('single', ['usuario' => $this->usuario->find($id)]);
+        //return response()->json($this->usuario->find($id));
+        return view('usuario', ['usuario' => $this->usuario->find($id)]);
     }
 }

@@ -14,18 +14,11 @@ class ItemController extends Controller
     }
 
     public function index() {
-        return response()->json(Item::all());
-        //return view('itens', ['itens' => $this->item->all()]);
+        //return response()->json(Item::all());
+        return view('itens', ['itens' => $this->item->all()]);
     }
 
     public function show($id) {
-        $item = Item::find($id);
-        if ($item) {
-            return response()->json($item);
-            //return view('item', ['item' => $item]);
-        } else {
-            return response()->json(['message' => 'Item não encontrado'], 404);
-            //return redirect('/itens')->with('error', 'Item não encontrado');
-        }
+        return view('item', ['item' => $this->item->find($id)]);
     }
 }
