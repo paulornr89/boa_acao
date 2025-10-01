@@ -31,5 +31,6 @@
     @else
     <p>Usuários não encontrados! </p>
     @endif
+    <a href="/">Voltar</a>
 </body>
 </html>

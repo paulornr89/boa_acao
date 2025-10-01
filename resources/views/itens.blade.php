@@ -32,5 +32,6 @@
     @else
     <p>Itens não encontrados! </p>
     @endif
+    <a href="/">Voltar</a>
 </body>
 </html>

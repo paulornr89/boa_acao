@@ -8,9 +8,10 @@ use App\Http\Controllers\DoacaoController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\DoadorController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::view('/', 'menu', ['titulo' => 'Menu Principal']);
 
 Route::get('/ola', [HomeController::class, 'index']);
 

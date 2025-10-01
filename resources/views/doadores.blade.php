@@ -43,5 +43,6 @@
     @else
     <p>Doadores não encontrados! </p>
     @endif
+    <a href="/">Voltar</a>
 </body>
 </html>
