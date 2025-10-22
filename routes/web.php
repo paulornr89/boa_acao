@@ -7,6 +7,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\DoacaoController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\DoadorController;
+use App\Http\Controllers\CategoriaController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -35,13 +36,21 @@ Route::get('/usuarios/{id}/edit', [UsuarioController::class, 'edit'])->name('usu
 Route::post('/usuarios/{id}/update', [UsuarioController::class, 'update'])->name('usuarios.update');
 Route::get('/usuarios/{id}/delete', [UsuarioController::class, 'delete'])->name('usuarios.delete');
 
+Route::get('/itens', [ItemController::class, 'index'])->name('itens.index');
 Route::get('/item', [ItemController::class, 'create'])->name('itens.create');
 Route::post('/item', [ItemController::class, 'store'])->name('itens.store');
-Route::get('/itens', [ItemController::class, 'index'])->name('itens.showAll');
 Route::get('/itens/{id}', [ItemController::class, 'show'])->name('itens.show');
 Route::get('/itens/{id}/edit', [ItemController::class, 'edit'])->name('itens.edit');
 Route::post('/itens/{id}/update', [ItemController::class, 'update'])->name('itens.update');
 Route::get('/itens/{id}/delete', [ItemController::class, 'delete'])->name('itens.delete');
+
+Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
+Route::get('/categorias/{id}', [CategoriaController::class, 'show'])->name('categorias.show');
+Route::get('/categoria', [CategoriaController::class, 'create'])->name('categorias.create');
+Route::post('/categoria', [CategoriaController::class, 'store'])->name('categorias.store');
+Route::get('/categorias/{id}/edit', [CategoriaController::class, 'edit'])->name('categorias.edit');
+Route::post('/categorias/{id}/update', [CategoriaController::class, 'update'])->name('categorias.update');
+Route::get('/categorias/{id}/delete', [CategoriaController::class, 'delete'])->name('categorias.delete');
 
 Route::get('/doacoes', [DoacaoController::class, 'index']);
 
