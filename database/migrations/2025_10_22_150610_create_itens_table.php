@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('itens', function (Blueprint $table) {
             $table->id();
-            $table->string('descricao');
-            $table->string('tipo');
+            $table->string('nome');
+            $table->string('descricao')->nullable();
+            $table->string('categoria');
+            // $table->foreignId('subcategoria_id')->constrained('subcategorias');
             $table->string('unidade');
             $table->timestamps();
         });

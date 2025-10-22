@@ -7,10 +7,11 @@
     <title>Item</title>
 </head>
 <body>
-    <h1>{{$item->descricao}}</h1>
+    <h1>{{$item->nome}}</h1>
 
     <ul>
-        <li>Tipo: {{$item->tipo}}</li>
+        <li>Tipo: {{$item->descricao}}</li>
+        <li>Tipo: {{$item->categoria}}</li>
         <li>Tipo: {{$item->unidade}}</li>
     </ul>
    <a href="/itens">Voltar</a>
