@@ -13,6 +13,7 @@
         <li><a href="/usuarios">Usuários</a></li>
         <li><a href="/doadores">Doadores</a></li>
         <li><a href="/itens">Itens</a></li>
+        <li><a href="/produtos">Produtos</a></li>
     </ul>
 </body>
 </html>

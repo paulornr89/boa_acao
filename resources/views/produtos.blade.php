@@ -27,6 +27,8 @@
                 <td>{{$produto->qtd_estoque}}</td>
                 <td>{{$produto->preco}}</td>
                 <td>{{($produto->importado)?'Sim':'Não'}}</td>
+                <td><a href="{{route('delete', $produto->id)}}" title='Deletar'>🗑️</a></td>
+                <td><a href="{{route('edit', $produto->id)}}" title='Editar'>✏️</a></td>
             </tr>
             @endforeach
         </tbody>
@@ -34,5 +36,6 @@
     @else
     <p>Produtos não encontrados! </p>
     @endif
+    <a href="/">Voltar</a>
 </body>
 </html>

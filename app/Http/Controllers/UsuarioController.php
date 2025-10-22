@@ -22,4 +22,42 @@ class UsuarioController extends Controller
         //return response()->json($this->usuario->find($id));
         return view('usuario', ['usuario' => $this->usuario->find($id)]);
     }
+
+    public function create() {
+        return view('usuario_create');
+    }
+
+    public function store(Request $request) {
+        $newUsuario = $request->all();
+
+        if(Usuario::create($newUsuario)) {
+            return redirect('/usuarios');
+        } else {
+            dd("Erro ao cadastrar usuário");
+        }
+    }
+
+    public function edit($id) {
+        $data = ['usuario' => Usuario::find($id)];
+
+        return view('usuario_edit', $data);
+    }
+
+    public function update(Request $request, $id) {
+        $usuarioAtualizado = $request->all();
+
+        if(!Usuario::find($id)->update($usuarioAtualizado)) {
+            dd("Erro ao atualizar usuário");
+        }
+
+        return redirect('/usuarios');
+    }
+
+    public function delete($id) {
+        if(Usuario::find($id)->delete()){
+            return redirect('/usuarios'); 
+        } else {
+            dd("Erro ao excluir usuário $id");
+        }
+    }
 }
