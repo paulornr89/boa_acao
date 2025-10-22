@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Usuários</h1>
+    <a href="/usuario">Incluir Novo Usuário</a>
     @if ($usuarios->count()>0)
     <table>
         <thead>

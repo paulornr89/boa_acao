@@ -7,24 +7,18 @@ use App\Models\Usuario;
 
 class UsuarioController extends Controller
 {
-    private $usuario;
-    
-    public function __construct() {
-       $this->usuario = new Usuario();
-    }
-
     public function index() {
         //return response()->json($this->usuario->all());//retorna todos os usuarios em json
-        return view('usuarios', ['usuarios' => $this->usuario->all()]);
+        return view('usuarios.index', ['usuarios' => Usuario::all()]);
     }
 
     public function show($id) {
         //return response()->json($this->usuario->find($id));
-        return view('usuario', ['usuario' => $this->usuario->find($id)]);
+        return view('usuarios.show', ['usuario' => Usuario::find($id)]);
     }
 
     public function create() {
-        return view('usuario_create');
+        return view('usuarios.create');
     }
 
     public function store(Request $request) {
@@ -40,7 +34,7 @@ class UsuarioController extends Controller
     public function edit($id) {
         $data = ['usuario' => Usuario::find($id)];
 
-        return view('usuario_edit', $data);
+        return view('usuarios.edit', $data);
     }
 
     public function update(Request $request, $id) {

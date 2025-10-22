@@ -15,15 +15,15 @@ class ItemController extends Controller
 
     public function index() {
         //return response()->json(Item::all());
-        return view('itens', ['itens' => $this->item->all()]);
+        return view('itens.index', ['itens' => $this->item->all()]);
     }
 
     public function show($id) {
-        return view('item', ['item' => $this->item->find($id)]);
+        return view('itens.show', ['item' => $this->item->find($id)]);
     }
 
     public function create() {
-        return view('item_create');
+        return view('itens.create');
     }
     
     public function store(Request $request) {
@@ -39,7 +39,7 @@ class ItemController extends Controller
     public function edit($id) {
         $item = ['item' => Item::find($id)];
 
-        return view('item_edit', $item);
+        return view('itens.edit', $item);
     }
     
     public function update(Request $request, $id) {
