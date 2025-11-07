@@ -7,6 +7,8 @@ use App\Models\Produto;
 use Illuminate\Http\Request;
 use App\Http\Resources\ProdutoCollection;
 use App\Http\Resources\ProdutoResource;
+use App\Http\Requests\ProdutoStoreRequest;
+use App\Http\Resources\ProdutoStoredResource;
 
 class ProdutoController extends Controller
 {
@@ -20,8 +22,12 @@ class ProdutoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {
-        //
+    public function store(ProdutoStoreRequest $request) {
+        try {
+            return new ProdutoStoredResource(Produto::create($request->validated()));
+        } catch (Exception $error) {
+            return $this->errorHandler('Erro ao criar novo produto!!', $error);
+        }
     }
 
     /**
