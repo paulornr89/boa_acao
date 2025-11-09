@@ -9,6 +9,8 @@ use App\Http\Resources\ProdutoCollection;
 use App\Http\Resources\ProdutoResource;
 use App\Http\Requests\ProdutoStoreRequest;
 use App\Http\Resources\ProdutoStoredResource;
+use App\Http\Resources\ProdutoUpdatedResource;
+use App\Http\Requests\ProdutoUpdateRequest;
 
 class ProdutoController extends Controller
 {
@@ -40,9 +42,14 @@ class ProdutoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Produto $produto)
+    public function update(ProdutoUpdateRequest $request, Produto $produto)
     {
-        //
+        try{
+            $produto->update($request->validated());
+            return new ProdutoUpdatedResource($produto);
+        } catch(Exception $error) {
+            return $this->errorHandler("Erro ao atualizar produto!!", $error);
+        }
     }
 
     /**
@@ -50,6 +57,11 @@ class ProdutoController extends Controller
      */
     public function destroy(Produto $produto)
     {
-        //
+        try {
+            $produto->delete();
+            return (new ProdutoResource($produto))->additional(["message" => "Produto removido!!!"]);
+        } catch (Exception $error) {
+            return $this->errorHandler("Erro ao remover Produto", $error);
+        }
     }
 }
