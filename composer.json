@@ -58,7 +58,8 @@
         "test": [
             "@php artisan config:clear --ansi",
             "@php artisan test"
-        ]
+        ],
+        "db:dump": "./vendor/bin/sail exec pgsql pg_dump -U postgres -d boa_acao > database/dump/backup_$(date +%Y-%m-%d).sql"
     },
     "extra": {
         "laravel": {
