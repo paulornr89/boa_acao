@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Http\Resources\ItemCollection;
@@ -11,6 +10,7 @@ use App\Http\Requests\ItemStoreRequest;
 use App\Http\Resources\ItemStoredResource;
 use App\Http\Requests\ItemUpdateRequest;
 use App\Http\Resources\ItemUpdatedResource;
+use Exception;
 
 class ItemController extends Controller
 {
@@ -49,7 +49,7 @@ class ItemController extends Controller
             $item->update($request->validated());
             return new ItemUpdatedResource($item);
         } catch( Exception $error ) {
-            return $this->errorHandler('Erro ao atualizar Item');
+            return $this->errorHandler('Erro ao atualizar Item', $error);
         }
     }
 

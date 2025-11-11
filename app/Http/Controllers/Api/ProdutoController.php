@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 use App\Http\Resources\ProdutoCollection;
@@ -11,6 +10,7 @@ use App\Http\Requests\ProdutoStoreRequest;
 use App\Http\Resources\ProdutoStoredResource;
 use App\Http\Resources\ProdutoUpdatedResource;
 use App\Http\Requests\ProdutoUpdateRequest;
+use Exception;
 
 class ProdutoController extends Controller
 {
