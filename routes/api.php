@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProdutoController;
 use App\Http\Controllers\Api\UsuarioController;
+use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ItemController;
 use App\Http\Controllers\Api\CategoriaController;
 use App\Http\Controllers\Api\SubcategoriaController;
@@ -21,3 +22,5 @@ Route::apiResource('itens', ItemController::class)->parameters(['itens' => 'item
 Route::apiResource('categorias', CategoriaController::class);
 
 Route::apiResource('subcategorias', SubcategoriaController::class);
+
+Route::apiResource('users', UserController::class);

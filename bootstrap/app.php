@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
             ForceJsonResponse::class,
         ]);
        // dd($middleware->getMiddlewareGroups());
+       $middleware->statefulApi();
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
