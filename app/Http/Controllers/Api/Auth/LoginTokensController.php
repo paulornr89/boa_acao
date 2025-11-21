@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use Exception;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class LoginTokensController extends LoginController
 {
@@ -19,4 +20,15 @@ class LoginTokensController extends LoginController
             return $this->errorHandler($error->getMessage(),$error,401);
         }
     }
+
+    public function logout(Request $request): JsonResponse {
+        $request->user()->tokens()->delete();
+        return response()->json(['message' => 'Sessão encerrada, realizado logout.']);
+    }
+    
+    public function revoke(Request $request): JsonResponse {
+        $request->user()->currentAccessToken()->delete();
+        return response()->json(['message' => 'Sessão encerrada, Token Revogado.']);
+    }
+
 }

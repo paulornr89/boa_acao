@@ -25,6 +25,7 @@ Route::prefix('v1')->group(function () {
     ->controller(LoginTokensController::class)
     ->group(function () {
         Route::post('logout','logout')->middleware("auth:sanctum");
+        Route::post('revoke','revoke')->middleware("auth:sanctum");
         Route::post('login','login');
     });
     
