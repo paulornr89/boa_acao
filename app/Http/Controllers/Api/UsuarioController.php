@@ -11,7 +11,7 @@ use App\Http\Requests\UsuarioStoreRequest;
 use App\Http\Resources\UsuarioStoredResource;
 use App\Http\Requests\UsuarioUpdateRequest;
 use App\Http\Resources\UsuarioUpdateResource;
-
+use Exception;
 
 class UsuarioController extends Controller
 {

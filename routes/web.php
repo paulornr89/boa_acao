@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Auth\LoginStatefullController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdutoController;
@@ -19,6 +20,11 @@ Route::view('/', 'menu', ['titulo' => 'Menu Principal']);
 // });
 
 Route::get('/ola', [HomeController::class, 'index']);
+
+Route::controller(LoginStatefullController::class)->group(function(){
+    Route::post('/login', 'login');
+    Route::post('/logout', 'logout')->middleware("auth:sanctum");
+});
 
 Route::controller(ProdutoController::class)->group(function () {
     Route::prefix('/produtos')->group(function () {

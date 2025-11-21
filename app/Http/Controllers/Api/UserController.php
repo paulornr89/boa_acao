@@ -7,6 +7,7 @@ use App\Http\Requests\UserStoreRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
+use App\Http\Resources\UserResourceCollection;
 use Exception;
 
 class UserController extends Controller
@@ -16,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return new UserResourceCollection(User::all());
     }
 
     /**
