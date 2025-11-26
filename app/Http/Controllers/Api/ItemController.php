@@ -28,7 +28,7 @@ class ItemController extends Controller
     {
         $statusHttp = 500;
        try {
-            if(!$request->user()->tokenCan('is-admin')) {
+            if(!$request->user()->tokenCan('is-admin') && !$request->user()->tokenCan('is-donor')) {
                 $statusHttp = 403;
                 throw new \Exception('Você não tem permissão!');
             }
