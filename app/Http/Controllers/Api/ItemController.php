@@ -30,7 +30,7 @@ class ItemController extends Controller
        try {
             if(!$request->user()->tokenCan('is-admin') && !$request->user()->tokenCan('is-donor')) {
                 $statusHttp = 403;
-                throw new \Exception('Você não tem permissão!');
+                throw new Exception('Você não tem permissão!');
             }
             return new ItemStoredResource(Item::create($request->validated()));
        } catch( Exception $error) {
