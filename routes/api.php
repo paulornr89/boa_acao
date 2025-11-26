@@ -39,14 +39,18 @@ Route::prefix('v1')->group(function () {
     
     Route::middleware('auth:sanctum')->group(function () {
         Route::resource('produtos', ProdutoController::class)
-            ->only(['store', 'update', 'destroy']);        
+            ->only(['store', 'update', 'destroy'])
+            ->middleware('ability:is-admin');       
         Route::apiResource('itens', ItemController::class)
             ->parameters(['itens' => 'item'])
-            ->only(['store', 'update', 'destroy']);
+            ->only(['store', 'update', 'destroy'])
+            ->middleware('ability:is-admin'); 
         Route::apiResource('categorias', CategoriaController::class)
-            ->only(['store', 'update', 'destroy']);
+            ->only(['store', 'update', 'destroy'])
+            ->middleware('ability:is-admin'); 
         Route::apiResource('subcategorias', SubcategoriaController::class)
-            ->only(['store', 'update', 'destroy']);
+            ->only(['store', 'update', 'destroy'])
+            ->middleware('ability:is-admin'); 
         Route::apiResource('usuarios', UsuarioController::class);
         Route::apiResource('users', UserController::class);
     });

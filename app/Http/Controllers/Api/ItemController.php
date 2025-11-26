@@ -26,10 +26,15 @@ class ItemController extends Controller
      */
     public function store(ItemStoreRequest $request)
     {
+        $statusHttp = 500;
        try {
+            if(!$request->user()->tokenCan('is-admin')) {
+                $statusHttp = 403;
+                throw new \Exception('Você não tem permissão!');
+            }
             return new ItemStoredResource(Item::create($request->validated()));
        } catch( Exception $error) {
-            return $this->errorHandler('Erro ao criar novo item', $error);
+            return $this->errorHandler('Erro ao criar novo item', $error, $statusHttp);
        } 
     }
 

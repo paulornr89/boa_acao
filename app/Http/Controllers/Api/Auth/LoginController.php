@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Api\Controller;
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
+use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -13,5 +16,22 @@ class LoginController extends Controller
             return User::where('email', $credentials['email'])->first();
         }
         return null;
+    }
+
+    public function login(LoginRequest $request) {
+        try{
+            $user = User::where('email', $request->email)->first();
+            if(!$user || !Hash::check($request->password,$user->password))
+                throw new \Exception('Falha na autenticação');
+            $ability = $user->is_admin?['is-admin']:[];
+            $token = $user->createToken($request->email, $ability)->plainTextToken;
+            return response()->json(['token'=>$token]);
+        } catch(\Exception $error) {
+             return $this->errorHandler(
+                $error->getMessage(),
+                $error,
+                401
+            );
+        }
     }
 }

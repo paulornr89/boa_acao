@@ -14,8 +14,15 @@ class LoginTokensController extends LoginController
         try {
             $user = $this->authenticate($request->validated());
             if(!$user) throw new Exception("Dados Inválidos!");
-                $token = $user->createToken($user->email)->plainTextToken;
-                return compact('token', 'user');
+            if($user->is_admin == true) {
+                $ability = ['is-admin'];
+            } else if($user->is_donor == true) {
+                $ability = ['is-donor'];
+            } else {
+                $ability = [];
+            }
+            $token = $user->createToken($user->email, $ability)->plainTextToken;
+            return compact('token', 'user');
         }catch(Exception $error) {
             return $this->errorHandler($error->getMessage(),$error,401);
         }
