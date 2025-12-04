@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('doadores', function (Blueprint $table) {
+            $table->id();
             $table->string('nome');
-            $table->string('documento')->primary();
+            $table->string('documento')->unique();
             $table->foreignId('user_id')->unique()->constrained('users')->onDelete('cascade');
             $table->string('telefone');
             $table->string('endereco');

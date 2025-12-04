@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('doacoes', function (Blueprint $table) {
             $table->id();
-            $table->integer('beneficiario_id');
-            $table->integer('doador_id');
+            $table->foreignId('organizacao_id')->constrained('organizacoes')->onDelete('cascade');
+            $table->foreignId('doador_id')->constrained('doadores')->onDelete('cascade');
             $table->string('status');
             $table->timestamps();
         });

@@ -10,13 +10,14 @@ class Organizacao extends Model
     /** @use HasFactory<\Database\Factories\OrganizacaoFactory> */
     use HasFactory;
 
-    protected $primaryKey = 'documento'; 
-    public $incrementing = false; 
-    protected $keyType = 'string';
     protected $table = 'organizacoes'; 
     protected $fillable = ['razao','documento','user_id','telefone','endereco','cidade','cep','documento_tipo'];
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+    
+    public function doacoes() {
+        return $this->hasMany(Doacao::class);
     }
 }

@@ -13,13 +13,14 @@ class Doador extends Model
      *
      * @var string
      */
-    protected $primaryKey = 'documento'; 
-    public $incrementing = false; 
-    protected $keyType = 'string';
     protected $table = 'doadores'; 
     protected $fillable = ['documento', 'nome', 'telefone', 'endereco', 'cep', 'numero', 'complemento', 'bairro', 'cidade', 'uf', 'documento_tipo'];
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function doacoes() {
+        return $this->hasMany(Doacao::class);
     }
 }

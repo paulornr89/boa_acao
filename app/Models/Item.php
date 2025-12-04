@@ -14,9 +14,15 @@ class Item extends Model
      * @var string
      */
     protected $table = 'itens'; 
-    protected $fillable = ['nome', 'descricao', 'categoria', 'unidade'];
+    protected $fillable = ['nome', 'descricao', 'categoria', 'unidade', 'categoria_id'];
 
     public function categoria() {
-        return $this->belongsToMany(Categoria::class);//N
+        return $this->belongsTo(Categoria::class);//N
+    }
+
+    public function doacoes() {
+        return $this->belongsToMany(Doacao::class)
+        ->withPivot('quantidade')
+        ->withTimestamps();
     }
 }
