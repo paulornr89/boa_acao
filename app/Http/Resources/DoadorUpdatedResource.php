@@ -2,19 +2,19 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Http\JsonResponse;
 
-class UsuarioStoredResource extends UsuarioResource
+class DoadorUpdatedResource extends DoadorResource
 {
     public function withResponse(Request $request, JsonResponse $response): void {
-        $response->setStatusCode(201, 'Usuário Criado!');
+        $response->setStatusCode(200, 'Doador Atualizado!');
     }
 
     public function with(Request $request): array {
         return [
-            "message" => "Usuário criado com sucesso!"
+            "message" => "Doador atualizado com sucesso!"
         ];
     }
 }

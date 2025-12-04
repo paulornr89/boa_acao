@@ -22,8 +22,6 @@ class UserStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'      => ' required | string | max:50 | min:3',
-            'surname'   => ' required | string | max:50 | min:3',
             'email'     => ' required | email | unique:users',
             'password'  => ' required | string | min:8',
         ];
@@ -32,9 +30,6 @@ class UserStoreRequest extends FormRequest
      public function messages()
     {
         return [
-            'name.require'      => 'O nome é obrigatório!!',
-            'name.max'          => 'O nome deve ter no máximo 50 caracteres!',
-            'surname.require'   => 'O sobrenome é obrigatório!!',
             'email.require'     => 'O email é obrigatório!!',
             'email.email'       => 'Informe um email válido!',
             'email.unique'      => 'Email indiponível, cadastre outro email.',

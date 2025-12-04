@@ -2,14 +2,13 @@
 
 use App\Http\Controllers\Api\Auth\LoginStatefullController;
 use App\Http\Controllers\Api\Auth\LoginTokensController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProdutoController;
-use App\Http\Controllers\Api\UsuarioController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ItemController;
 use App\Http\Controllers\Api\CategoriaController;
 use App\Http\Controllers\Api\SubcategoriaController;
+use App\Http\Controllers\DoadorController;
 
 Route::prefix('v1')->group(function () {
     Route::middleware('web')
@@ -53,16 +52,20 @@ Route::prefix('v1')->group(function () {
         Route::apiResource('subcategorias', SubcategoriaController::class)
             ->only(['store', 'update', 'destroy'])
             ->middleware('ability:is-admin'); 
-        Route::apiResource('usuarios', UsuarioController::class);
         Route::apiResource('users', UserController::class)
+            ->only(['index'])
+            ->middleware('ability:is-admin'); 
+        Route::apiResource('doador', DoadorController::class)
             ->only(['index'])
             ->middleware('ability:is-admin'); 
 
         // Rota para ver um SÓ, EDITAR, DELETAR (show, update, destroy)
         Route::apiResource('users', UserController::class)
-            ->except(['index','store']) // Exclui a listagem (index)
-            ->middleware('ability:is-admin,is-donor');
-            });
-    
-        //->except(['index','show']);    
+        ->except(['index','store']) // Exclui a listagem (index)
+        ->middleware('ability:is-admin,is-donor');
+
+        Route::apiResource('doadores', DoadorController::class)
+        ->except(['index','store']) // Exclui a listagem (index)
+        ->middleware('ability:is-admin,is-donor');
+        });        
 });
