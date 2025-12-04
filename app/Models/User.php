@@ -49,4 +49,8 @@ class User extends Authenticatable
     public function doador() {
         return $this->hasOne(Doador::class);//1:1
     }
+
+    public function organizacao() {
+        return $this->hasOne(Organizacao::class);//1:1
+    }
 }

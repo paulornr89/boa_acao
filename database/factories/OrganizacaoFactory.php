@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Organizacao;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class OrganizacaoFactory extends Factory
 {
+    protected $model = Organizacao::class;
     /**
      * Define the model's default state.
      *
@@ -17,7 +19,14 @@ class OrganizacaoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'razao' => $this->faker->name(),
+            'documento' => $this->faker->unique()->numerify('#############'), 
+            'documento_tipo' => $this->faker->randomElement(['PF', 'PJ']),
+            'telefone' => $this->faker->numerify('539########'),
+            'endereco' => $this->faker->streetAddress(),
+            'cep' => $this->faker->numerify('########'),
+            'cidade' => $this->faker->city(),
+            'estado' => $this->faker->stateAbbr()
         ];
     }
 }

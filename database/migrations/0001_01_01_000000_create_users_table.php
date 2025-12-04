@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('is_admin')->default(false);
             $table->boolean('is_donor')->default(false);
+            $table->boolean('is_organization')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

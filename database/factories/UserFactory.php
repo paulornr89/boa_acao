@@ -42,9 +42,16 @@ class UserFactory extends Factory
     }
 
     public function doador(): Factory
-{
-    return $this->state(fn (array $attributes) => [
-        'is_donor' => true,
-    ]);
-}
+    {
+        return $this->state(fn (array $attributes) => [
+            'is_donor' => true,
+        ]);
+    }
+    
+    public function organizacao(): Factory
+    {
+        return $this->state(fn (array $attributes) => [
+            'is_organization' => true,
+        ]);
+    }
 }
