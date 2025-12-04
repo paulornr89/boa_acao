@@ -2,11 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Exception;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,7 +15,8 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
        $this->call([
         UserAdminSeeder::class,
-        DoadorSeeder::class
+        DoadorSeeder::class,
+        CategoriaItemSeeder::class
        ]);
     }
 }

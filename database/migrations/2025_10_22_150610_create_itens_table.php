@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('descricao')->nullable();
-            $table->string('categoria');
-            // $table->foreignId('subcategoria_id')->constrained('subcategorias');
+            $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade');
             $table->string('unidade');
             $table->timestamps();
         });

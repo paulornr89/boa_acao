@@ -47,6 +47,6 @@ class User extends Authenticatable
     }
 
     public function doador() {
-        return $this->hasOne(Doador::class);
+        return $this->hasOne(Doador::class);//1:1
     }
 }
