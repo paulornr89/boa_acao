@@ -26,37 +26,6 @@ Route::controller(LoginStatefullController::class)->group(function(){
     Route::post('/logout', 'logout')->middleware("auth:sanctum");
 });
 
-Route::controller(ProdutoController::class)->group(function () {
-    Route::prefix('/produtos')->group(function () {
-        Route::get('/', 'index');
-        Route::get('/{id}', 'show');
-    });
-    
-    Route::prefix('/produto')->group(function () {
-        Route::get('/', 'create');
-        Route::post('/', 'store');
-        Route::get('/{id}/edit', 'edit')->name('edit');
-        Route::post('/{id}/update', 'update')->name('update');
-        Route::get('/{id}/delete', 'delete')->name('delete');
-    });
-});
-
-Route::controller(UsuarioController::class)->group(function () {
-    Route::prefix('/usuarios')->group(function () {
-        Route::get('/', 'index');
-        Route::get('/{id}', 'show')->name('usuario.show');
-    });
-    
-    Route::prefix('/usuario')->group(function () {
-        Route::get('/', 'create')->name('usuarios.create');
-        Route::post('/', 'store')->name('usuarios.store');
-        Route::get('/{id}/edit', 'edit')->name('usuarios.edit');
-        Route::post('/{id}/update', 'update')->name('usuarios.update');
-        Route::get('/{id}/delete', 'delete')->name('usuarios.delete');
-    });
-});
-
-
 Route::controller(ItemController::class)->group(function() {
     Route::prefix('/itens')->group(function () {
         Route::get('/', 'index')->name('itens.index');
@@ -95,5 +64,3 @@ Route::get('/doacoes/{id}', [DoacaoController::class, 'show']);
 Route::get('/doadores', [DoadorController::class, 'index']);
 
 Route::get('/doadores/{id}', [DoadorController::class, 'show']);
-
-

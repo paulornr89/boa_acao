@@ -14,7 +14,7 @@ class Doador extends Model
      * @var string
      */
     protected $table = 'doadores'; 
-    protected $fillable = ['documento', 'nome', 'telefone', 'endereco', 'cep', 'numero', 'complemento', 'bairro', 'cidade', 'uf', 'documento_tipo'];
+    protected $fillable = ['user_id','documento', 'nome', 'telefone', 'endereco', 'cep', 'cidade', 'estado', 'documento_tipo'];
 
     public function user() {
         return $this->belongsTo(User::class);

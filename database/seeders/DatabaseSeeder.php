@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
         DoadorSeeder::class,
         OrganizacaoSeeder::class,
         CategoriaItemSeeder::class,
-        DoacaoSeeder::class
+        DoacaoSeeder::class, 
+        ItemSeeder::class,
        ]);
     }
 }

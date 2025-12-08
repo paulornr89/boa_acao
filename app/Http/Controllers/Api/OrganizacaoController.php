@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\OrganizacaoCollection;
 use App\Models\Organizacao;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class OrganizacaoController extends Controller
      */
     public function index()
     {
-        //
+        return new OrganizacaoCollection(Organizacao::all());
     }
 
     /**

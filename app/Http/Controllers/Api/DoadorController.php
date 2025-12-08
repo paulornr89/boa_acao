@@ -40,16 +40,17 @@ class DoadorController extends Controller
     public function show(Request $request, Doador $doador)
     {
         try {
-             if ($request->user()->id == $doador->user_id) {
-                return new DoadorResource($doador);
-            } else if ($request->user()->is_admin) {
-                return new DoadorResource($doador);
-            } else {
-                throw new Exception("Não autorizado.");
-            }
-            // if(($request->user()->id != $user->id) && (!$request->user()->is_admin && !$request->user()->is_donor))
-                
-            // return new UserResource($user);
+             // Doador só pode ver a si mesmo
+        if ($request->user()->id == $doador->user_id) {
+            return new DoadorResource($doador);
+        }
+
+        // Admin pode ver qualquer um
+        if ($request->user()->tokenCan('is-admin')) {
+            return new DoadorResource($doador);
+        }
+
+        throw new \Exception("Sem permissão");
         } catch(Exception $error) {
             return $this->errorHandler('Erro ao consultar usuário - Sem permissão',$error, 403);
         }

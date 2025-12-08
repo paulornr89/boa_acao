@@ -11,7 +11,7 @@ class Organizacao extends Model
     use HasFactory;
 
     protected $table = 'organizacoes'; 
-    protected $fillable = ['razao','documento','user_id','telefone','endereco','cidade','cep','documento_tipo'];
+    protected $fillable = ['razao','documento','user_id','telefone','endereco','cidade','cep','estado','documento_tipo'];
 
     public function user() {
         return $this->belongsTo(User::class);

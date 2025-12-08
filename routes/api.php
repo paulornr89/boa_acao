@@ -3,12 +3,11 @@
 use App\Http\Controllers\Api\Auth\LoginStatefullController;
 use App\Http\Controllers\Api\Auth\LoginTokensController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ProdutoController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ItemController;
 use App\Http\Controllers\Api\CategoriaController;
-use App\Http\Controllers\Api\SubcategoriaController;
-use App\Http\Controllers\DoadorController;
+use App\Http\Controllers\Api\DoadorController;
+use App\Http\Controllers\Api\OrganizacaoController;
 
 Route::prefix('v1')->group(function () {
     Route::middleware('web')
@@ -26,22 +25,18 @@ Route::prefix('v1')->group(function () {
         Route::post('revoke','revoke')->middleware("auth:sanctum");
         Route::post('login','login');
     });
-    
-    Route::resource('produtos', ProdutoController::class)->only(['index', 'show']);    
+ 
     Route::apiResource('itens', ItemController::class)
         ->parameters(['itens' => 'item'])
         ->only(['index','show']);
     Route::apiResource('categorias', CategoriaController::class)
         ->only(['index','show']);
-    Route::apiResource('subcategorias', SubcategoriaController::class)
-        ->only(['index','show']);
     Route::apiResource('users', UserController::class)
         ->only(['store']);//o store ficou fora pois um usuário pode criar se cadastrar sem ter se autenticado
+    Route::apiResource('organizacoes', OrganizacaoController::class)
+        ->only(['index']);//o store ficou fora pois um usuário pode criar se cadastrar sem ter se autenticado
     
-    Route::middleware('auth:sanctum')->group(function () {
-        Route::resource('produtos', ProdutoController::class)
-            ->only(['store', 'update', 'destroy'])
-            ->middleware('ability:is-admin');       
+    Route::middleware('auth:sanctum')->group(function () {     
         Route::apiResource('itens', ItemController::class)
             ->parameters(['itens' => 'item'])
             ->only(['store', 'update', 'destroy'])
@@ -49,23 +44,19 @@ Route::prefix('v1')->group(function () {
         Route::apiResource('categorias', CategoriaController::class)
             ->only(['store', 'update', 'destroy'])
             ->middleware('ability:is-admin'); 
-        Route::apiResource('subcategorias', SubcategoriaController::class)
-            ->only(['store', 'update', 'destroy'])
-            ->middleware('ability:is-admin'); 
         Route::apiResource('users', UserController::class)
             ->only(['index'])
             ->middleware('ability:is-admin'); 
-        Route::apiResource('doador', DoadorController::class)
+        Route::apiResource('doadores', DoadorController::class)
             ->only(['index'])
             ->middleware('ability:is-admin'); 
 
-        // Rota para ver um SÓ, EDITAR, DELETAR (show, update, destroy)
         Route::apiResource('users', UserController::class)
         ->except(['index','store']) // Exclui a listagem (index)
         ->middleware('ability:is-admin,is-donor');
 
         Route::apiResource('doadores', DoadorController::class)
-        ->except(['index','store']) // Exclui a listagem (index)
+        ->except(['index']) // Exclui a listagem (index)
         ->middleware('ability:is-admin,is-donor');
         });        
 });
