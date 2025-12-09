@@ -14,11 +14,6 @@ class DoadorResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return array_merge(
-            parent::toArray($request),
-            [
-                'user' => new UserResource($this->whenLoaded('user')),
-            ]
-        );
+        return parent::toArray($request);
     }
 }
