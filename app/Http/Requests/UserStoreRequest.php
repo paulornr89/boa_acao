@@ -24,6 +24,9 @@ class UserStoreRequest extends FormRequest
         return [
             'email'     => ' required | email | unique:users',
             'password'  => ' required | string | min:8',
+            'is_donor' => 'boolean|nullable',
+            'is_admin' => 'boolean|nullable',
+            'is_organization' => 'boolean|nullable',
         ];
     }
 

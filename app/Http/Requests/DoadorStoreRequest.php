@@ -22,7 +22,8 @@ class DoadorStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome'      => ' required | string | max:50 | min:3',
+            'nome'      => 'required | string | max:50 | min:3',
+            'user_id'      => ['required', 'integer', 'exists:users,id'],
             'telefone'      => ' required | string | max:11 | min:11',
             'documento'     => ' required | string | max:14 | min:11 | unique:doadores',
             'endereco'     => ' string ',

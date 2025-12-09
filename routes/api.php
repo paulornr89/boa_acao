@@ -48,7 +48,7 @@ Route::prefix('v1')->group(function () {
             ->only(['index'])
             ->middleware('ability:is-admin'); 
         Route::apiResource('doadores', DoadorController::class)
-            ->only(['index', 'show'])
+            ->only(['index'])
             ->middleware('ability:is-admin'); 
 
         Route::apiResource('users', UserController::class)
@@ -56,7 +56,7 @@ Route::prefix('v1')->group(function () {
         ->middleware('ability:is-admin,is-donor');
 
         Route::apiResource('doadores', DoadorController::class)
-        ->except(['index','show']) // Exclui a listagem (index)
+        ->except(['index']) // Exclui a listagem (index)
         ->middleware('ability:is-admin,is-donor');
         });        
 });

@@ -21,6 +21,9 @@ class User extends Authenticatable
     protected $fillable = [
         'email',
         'password',
+        'is_donor',
+        'is_organization',
+        'is_admin'
     ];
 
     /**
@@ -43,6 +46,9 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
+            'is_donor' => 'boolean',
+            'is_organization' => 'boolean',
         ];
     }
 

@@ -28,7 +28,12 @@ class DoadorController extends Controller
     public function store(DoadorStoreRequest $request)
     {
         try {
-            return (new DoadorResource(Doador::create($request->validated())));
+            $user = $request->user();
+           // dd($request->input('user_id') == $request->id);
+
+            if($user->is_admin || ($user->is_donor && ($request->input('user_id') == $user->id))) {
+                return (new DoadorResource(Doador::create($request->validated())));
+            }
         } catch (Exception $error) {
             $this->errorHandler('Erro ao criar novo usuário',$error);
         }
