@@ -29,7 +29,6 @@ class DoadorController extends Controller
     {
         try {
             $user = $request->user();
-           // dd($request->input('user_id') == $request->id);
 
             if($user->is_admin || ($user->is_donor && ($request->input('user_id') == $user->id))) {
                 return (new DoadorResource(Doador::create($request->validated())));
@@ -61,18 +60,25 @@ class DoadorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(DoadorUpdateRequest $request, Doador $doador)
+    public function update(DoadorUpdateRequest $request, $id)
     {
         try {
-            if ($request->user()->id == $doador->user_id) {
+            $user = $request->user();
+            $doador = Doador::findOrFail($id);
+
+            if($user->is_admin || ($user->is_donor && ($doador->user_id == $user->id))){
+                $doador->nome = $request->input('nome');
+                $doador->telefone = $request->input('telefone');
+                $doador->endereco = $request->input('endereco');
+                $doador->cidade = $request->input('cidade');
+                $doador->estado = $request->input('estado');
+                $doador->cep = $request->input('cep');
+
                 $doador->update($request->validated());
                 return new DoadorUpdatedResource($doador);
-            } else if ($request->user()->is_admin) {
-                $doador->update($request->validated());
-                return new DoadorUpdatedResource($doador);
-            } else {
-                throw new Exception("Não autorizado.");
-            }
+            } 
+
+            throw new Exception("Não autorizado.");
         } catch(Exception $error) {
             return $this->errorHandler('Erro ao atualizar usuário - Sem permissão',$error,403);
         }
