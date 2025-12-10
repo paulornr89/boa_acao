@@ -41,11 +41,11 @@ DB_CONNECTION=pgsql
 DB_HOST=pgsql
 DB_PORT=5432
 DB_DATABASE=boa_acao
-DB_USERNAME=sail
-DB_PASSWORD=password
+DB_USERNAME=postgres
+DB_PASSWORD=sua_senha
 
 # Uploads
-FILESYSTEM_DISK=public
+FILESYSTEM_DISK=local
 ```
 
 3. Instalar Dependências
