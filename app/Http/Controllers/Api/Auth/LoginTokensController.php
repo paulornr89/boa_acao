@@ -18,6 +18,8 @@ class LoginTokensController extends LoginController
                 $ability = ['is-admin'];
             } else if($user->is_donor == true) {
                 $ability = ['is-donor'];
+            } else if($user->is_organization == true) {
+                $ability = ['is-organization'];
             } else {
                 $ability = [];
             }

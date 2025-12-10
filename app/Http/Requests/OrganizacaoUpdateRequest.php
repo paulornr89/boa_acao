@@ -11,7 +11,7 @@ class OrganizacaoUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class OrganizacaoUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'razao'      => 'sometimes | string | max:50 | min:3',
+            'user_id'      => ['sometimes', 'integer', 'exists:users,id'],
+            'telefone'      => ' sometimes | string | max:11 | min:11',
+            'documento'     => ' sometimes | string | max:14 | min:11 | unique:doadores',
+            'endereco'     => ' sometimes | string | max:100 ',
+            'cidade'     => ' sometimes | string | max:20',
+            'estado'     => ' sometimes | string | min:2',
+            'cep'     => ' sometimes | min:8 ',
+            'documento_tipo'  => ' sometimes | string | min:2',
         ];
     }
 }
