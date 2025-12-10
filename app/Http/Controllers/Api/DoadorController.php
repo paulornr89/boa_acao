@@ -34,7 +34,7 @@ class DoadorController extends Controller
                 return (new DoadorResource(Doador::create($request->validated())));
             }
         } catch (Exception $error) {
-            $this->errorHandler('Erro ao criar novo usuário',$error);
+            $this->errorHandler('Erro ao criar novo doador',$error);
         }
     }
 
@@ -53,7 +53,7 @@ class DoadorController extends Controller
 
             throw new \Exception("Sem permissão");
         } catch(Exception $error) {
-            return $this->errorHandler('Erro ao consultar usuário - Sem permissão',$error, 403);
+            return $this->errorHandler('Erro ao consultar doador - Sem permissão',$error, 403);
         }
     }
 
@@ -80,15 +80,27 @@ class DoadorController extends Controller
 
             throw new Exception("Não autorizado.");
         } catch(Exception $error) {
-            return $this->errorHandler('Erro ao atualizar usuário - Sem permissão',$error,403);
+            return $this->errorHandler('Erro ao atualizar Doador - Sem permissão',$error,403);
         }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Doador $doador)
+    public function destroy(Request $request, $id)
     {
-        //
+        try {
+            $user = $request->user();
+            $doador = Doador::findOrFail($id);
+
+            if ($user->is_admin || (($user->is_donor && ($doador->user_id == $user->id)))) {
+                $doador->delete();
+                return (new DoadorResource($doador))->additional(["message" => "Doador Removido!!!"]);
+            }
+
+            throw new Exception("Não autorizado.");
+        } catch(Exception $error) {
+            return $this->errorHandler("Erro ao deletar Doador", $error,403);
+        }
     }
 }
