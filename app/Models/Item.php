@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Item extends Model
 {
@@ -24,5 +25,9 @@ class Item extends Model
         return $this->belongsToMany(Doacao::class)
         ->withPivot('quantidade')
         ->withTimestamps();
+    }
+
+    public function media():MorphMany { 
+        return $this->morphMany(Media::class,'model'); 
     }
 }

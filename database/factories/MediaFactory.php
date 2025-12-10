@@ -17,7 +17,7 @@ class MediaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'source' => fake()->imageUrl(360, 360,'',true),
         ];
     }
 }

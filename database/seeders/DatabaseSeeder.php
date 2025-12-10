@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         CategoriaItemSeeder::class,
         DoacaoSeeder::class, 
         ItemSeeder::class,
+        MediaSeeder::class
        ]);
     }
 }
