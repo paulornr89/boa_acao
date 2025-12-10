@@ -41,7 +41,7 @@ DB_CONNECTION=pgsql
 DB_HOST=pgsql
 DB_PORT=5432
 DB_DATABASE=boa_acao
-DB_USERNAME=postgres
+DB_USERNAME=seu_usuario_do_banco
 DB_PASSWORD=sua_senha
 
 # Uploads
@@ -102,4 +102,14 @@ Use o token:
 
 ```makefile
 Authorization: Bearer <token>
+```
+
+## 💾 Backup
+
+### Gerar Backup do Banco de Dados
+Para criar um arquivo SQL com todos os dados atuais (salvo na pasta `database/dump`):
+
+```bash
+# Certifique-se de criar a pasta antes, caso não exista: mkdir -p database/dump
+./vendor/bin/sail exec pgsql pg_dump -U seu_usuario_do_banco boa_acao > database/dump/backup_$(date +%Y-%m-%d).sql
 ```
