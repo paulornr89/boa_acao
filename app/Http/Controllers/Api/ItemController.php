@@ -10,6 +10,7 @@ use App\Http\Requests\ItemStoreRequest;
 use App\Http\Resources\ItemStoredResource;
 use App\Http\Requests\ItemUpdateRequest;
 use App\Http\Resources\ItemUpdatedResource;
+use App\Repositories\ItemRepository;
 use Exception;
 
 class ItemController extends Controller
@@ -32,7 +33,8 @@ class ItemController extends Controller
                 $statusHttp = 403;
                 throw new Exception('Você não tem permissão!');
             }
-            return new ItemStoredResource(Item::create($request->validated()));
+            $novoItem = ItemRepository::store($request->validated());
+            return new ItemStoredResource($novoItem);
        } catch( Exception $error) {
             return $this->errorHandler('Erro ao criar novo item', $error, $statusHttp);
        } 

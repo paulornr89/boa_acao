@@ -24,7 +24,7 @@ class ItemUpdateRequest extends FormRequest
         return [
            "nome" => "required | max: 20",
             "descricao" => "required",
-            "categoria" => "required | max: 4",
+            "categoria_id" => "sometimes | max: 4",
             "unidade" => "required | size: 2"
         ];
     }

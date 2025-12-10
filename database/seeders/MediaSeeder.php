@@ -61,8 +61,8 @@ class MediaSeeder extends Seeder
             ];
             
             Media::insert($medias)
-                ? Log::channel('stderr')->info("Vídeos cadastrados! Doador: $modelDoadorId ")
-                : throw new Exception("Erro ao criar promoções!");
+                ? Log::channel('stderr')->info("Vídeos cadastrados! Doador: $modelDoadorId "." Item: $modelItemId")
+                : throw new Exception("Erro ao inserir Mídia!");
           } catch( Exception $error) {
             Log::debug($error->getMessage());
             Log::channel('stderr')->error($error->getMessage());

@@ -24,7 +24,8 @@ class ItemStoreRequest extends FormRequest
         return [
             "nome" => "required | max: 20",
             "descricao" => "required",
-            "categoria" => "required | max: 4",
+            "categoria_id" => "required | max: 4",
+            "imagem" => "nullable | image",
             "unidade" => "required | size: 2"
         ];
     }

@@ -15,7 +15,7 @@ class Item extends Model
      * @var string
      */
     protected $table = 'itens'; 
-    protected $fillable = ['nome', 'descricao', 'categoria', 'unidade', 'categoria_id'];
+    protected $fillable = ['nome', 'descricao', 'unidade', 'categoria_id'];
 
     public function categoria() {
         return $this->belongsTo(Categoria::class);//N
