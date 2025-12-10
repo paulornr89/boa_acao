@@ -1,6 +1,6 @@
-# 🎁 Plataforma de Doações (Boa Ação API)
+# 🎁 Boa Ação API
 
-API desenvolvida em **Laravel 10+** para gerenciamento de doações, conectando doadores, organizações e itens. O sistema utiliza arquitetura em contêineres (**Docker/Sail**), autenticação via **Sanctum**, controle de permissões baseado em *Abilities* e upload de mídia polimórfica.
+API desenvolvida em **Laravel 10+** para gerenciamento de doações. O sistema utiliza arquitetura em contêineres (**Docker/Sail**).
 
 ---
 
@@ -19,8 +19,8 @@ Certifique-se de ter instalado em sua máquina:
 ### 1. Clonar o Repositório
 
 ```bash
-git clone <URL_DO_SEU_REPOSITORIO>
-cd <NOME_DA_PASTA>
+git clone https://github.com/paulornr89/boa_acao.git
+cd boa_acao
 ```
 
 2. Configurar o Ambiente (.env)
