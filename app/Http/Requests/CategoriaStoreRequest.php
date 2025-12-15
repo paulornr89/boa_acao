@@ -22,8 +22,8 @@ class CategoriaStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "sigla" => "required | max: 3",
-            "nome" => "required | max: 20"
+            "sigla" => "required | max: 5",
+            "nome" => "required | max: 30"
         ];
     }
 }

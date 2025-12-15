@@ -19,6 +19,7 @@ class ItemController extends Controller
      * Display a listing of the resource.
      */
     public function index() {
+        $itens = Item::with('media')->get();
         return new ItemCollection(Item::all());
     }
 
@@ -44,6 +45,7 @@ class ItemController extends Controller
      * Display the specified resource.
      */
     public function show(Item $item) {
+        $item->load('media');
         return new ItemResource($item);
     }
 

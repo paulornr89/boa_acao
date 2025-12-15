@@ -30,9 +30,9 @@ class DoadorController extends Controller
         try {
             $user = $request->user();
 
-            if($user->is_admin || ($user->is_donor && ($request->input('user_id') == $user->id))) {
-                return (new DoadorResource(Doador::create($request->validated())));
-            }
+            // if($user->is_admin || ($user->is_donor && ($request->input('user_id') == $user->id))) {
+            return (new DoadorResource(Doador::create($request->validated())));
+            // }
         } catch (Exception $error) {
             $this->errorHandler('Erro ao criar novo doador',$error);
         }

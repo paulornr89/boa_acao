@@ -35,6 +35,8 @@ Route::prefix('v1')->group(function () {
         ->only(['store']);//o store ficou fora pois um usuário pode criar se cadastrar sem ter se autenticado
     Route::apiResource('organizacoes', OrganizacaoController::class)
         ->only(['index']);//está liberado para consulta pois as pessoas podem consultar instituições beneficentes
+    Route::apiResource('doadores', DoadorController::class)
+        ->only(['store']);
     
     Route::middleware('auth:sanctum')->group(function () {     
         Route::apiResource('itens', ItemController::class)
@@ -60,7 +62,7 @@ Route::prefix('v1')->group(function () {
         ->middleware('ability:is-admin,is-organization');
 
         Route::apiResource('doadores', DoadorController::class)
-        ->except(['index']) // Exclui a listagem (index)
+        ->except(['index', 'store']) // Exclui a listagem (index)
         ->middleware('ability:is-admin,is-donor');
         });        
 });
