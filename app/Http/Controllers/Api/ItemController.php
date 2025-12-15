@@ -20,7 +20,7 @@ class ItemController extends Controller
      */
     public function index() {
         $itens = Item::with('media')->get();
-        return new ItemCollection(Item::all());
+        return new ItemCollection($itens);
     }
 
     /**
