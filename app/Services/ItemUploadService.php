@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ItemUploadService
 {
-    private static $path = 'itens/';
+    private static $path = 'itens';
 
     public static function handleUploadFile(UploadedFile $itemImage): array | null
     {
