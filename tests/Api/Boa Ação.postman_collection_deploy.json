@@ -1,0 +1,1103 @@
+{
+	"info": {
+		"_postman_id": "d50d09d3-12ab-4428-b138-a413478c1045",
+		"name": "Boa Ação",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15599413"
+	},
+	"item": [
+		{
+			"name": "Itens",
+			"item": [
+				{
+					"name": "INDEX",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_prd}}itens",
+							"host": [
+								"{{base_url_prd}}itens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SHOW",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_prd}}itens/51",
+							"host": [
+								"{{base_url_prd}}itens"
+							],
+							"path": [
+								"51"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "STORE",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Massa\",\r\n    \"descricao\": \"Espaguete\",\r\n    \"categoria_id\": 2,\r\n    \"unidade\": \"PC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_prd}}itens",
+							"host": [
+								"{{base_url_prd}}itens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "STORE COM IMAGEM",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "Feijão",
+									"type": "text"
+								},
+								{
+									"key": "descricao",
+									"value": "Preto",
+									"type": "text"
+								},
+								{
+									"key": "categoria_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "unidade",
+									"value": "Kg",
+									"type": "text"
+								},
+								{
+									"key": "imagem",
+									"type": "file",
+									"src": "postman-cloud:///1f0db83a-2f48-4d20-ac4d-ca4c817c2929"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url_prd}}itens",
+							"host": [
+								"{{base_url_prd}}itens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Arroz\",\r\n    \"descricao\": \"Tipo 2\",\r\n    \"unidade\": \"KG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_prd}}itens/51",
+							"host": [
+								"{{base_url_prd}}itens"
+							],
+							"path": [
+								"51"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url_prd}}itens/52",
+							"host": [
+								"{{base_url_prd}}itens"
+							],
+							"path": [
+								"52"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "INDEX",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url_prd}}categorias",
+							"host": [
+								"{{base_url_prd}}categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SHOW",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_prd}}categorias/1",
+							"host": [
+								"{{base_url_prd}}categorias"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "STORE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sigla\": \"TES\",\r\n    \"nome\": \"Teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_prd}}categorias",
+							"host": [
+								"{{base_url_prd}}categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sigla\": \"TES\",\r\n    \"nome\": \"Teste7777\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_prd}}categorias/6",
+							"host": [
+								"{{base_url_prd}}categorias"
+							],
+							"path": [
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url_prd}}categorias/6",
+							"host": [
+								"{{base_url_prd}}categorias"
+							],
+							"path": [
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "LOGIN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const {token} = pm.response.json();\r",
+									"token && pm.collectionVariables.set(\"TOKEN\",token);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@admin.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123@",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "paulo.rosa@teste.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "marcospereira@teste.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "123mudar",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "bancodealimentos@teste.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "123mudar",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url_prd}}tokens/login",
+							"host": [
+								"{{base_url_prd}}tokens"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGOUT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_prd}}tokens/logout",
+							"host": [
+								"{{base_url_prd}}tokens"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REVOKE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_prd}}tokens/revoke",
+							"host": [
+								"{{base_url_prd}}tokens"
+							],
+							"path": [
+								"revoke"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "INDEX",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_prd}}users",
+							"host": [
+								"{{base_url_prd}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SHOW",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_prd}}users/1",
+							"host": [
+								"{{base_url_prd}}users"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "STORE PARA DOADOR",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"mnunes@teste.com\",\r\n    \"password\": \"123mudar\",\r\n    \"is_donor\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_prd}}users",
+							"host": [
+								"{{base_url_prd}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "STORE PARA ORGANIZAÇÂO",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"bancodealimentos@teste.com\",\r\n    \"password\": \"123mudar\",\r\n    \"is_organization\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_prd}}users",
+							"host": [
+								"{{base_url_prd}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "mnunes@teste.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url_prd}}users/24",
+							"host": [
+								"{{base_url_prd}}users"
+							],
+							"path": [
+								"24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_prd}}users/24",
+							"host": [
+								"{{base_url_prd}}users"
+							],
+							"path": [
+								"24"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Doadores",
+			"item": [
+				{
+					"name": "INDEX",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url_prd}}doadores",
+							"host": [
+								"{{base_url_prd}}doadores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SHOW",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url_prd}}doadores/3",
+							"host": [
+								"{{base_url_prd}}doadores"
+							],
+							"path": [
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "STORE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 26,\r\n    \"nome\": \"Marcos Pereira\",\r\n    \"documento\": \"02010447999\",\r\n    \"telefone\": \"53984561498\",\r\n    \"endereco\": \"Rua B.\",\r\n    \"cep\": \"96065355\",\r\n    \"cidade\": \"Pelotas\",\r\n    \"estado\": \"RS\",\r\n    \"documento_tipo\": \"PF\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_prd}}doadores",
+							"host": [
+								"{{base_url_prd}}doadores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Marcos Pereira\",\r\n    \"telefone\": \"00000000001\",\r\n    \"endereco\": \"Rua X.\",\r\n    \"cep\": \"96065355\",\r\n    \"cidade\": \"Rio Grande\",\r\n    \"estado\": \"RS\",\r\n    \"documento_tipo\": \"PF\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_prd}}doadores/12",
+							"host": [
+								"{{base_url_prd}}doadores"
+							],
+							"path": [
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url_prd}}doadores/12",
+							"host": [
+								"{{base_url_prd}}doadores"
+							],
+							"path": [
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Organização",
+			"item": [
+				{
+					"name": "INDEX",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_prd}}organizacoes",
+							"host": [
+								"{{base_url_prd}}organizacoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SHOW",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_prd}}organizacoes/11",
+							"host": [
+								"{{base_url_prd}}organizacoes"
+							],
+							"path": [
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "STORE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 25,\r\n    \"razao\": \"Banco de Alimentos\",\r\n    \"documento\": \"11110447999111\",\r\n    \"telefone\": \"53984561499\",\r\n    \"endereco\": \"Rua W.\",\r\n    \"cep\": \"96065377\",\r\n    \"cidade\": \"Pelotas\",\r\n    \"estado\": \"RS\",\r\n    \"documento_tipo\": \"PJ\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_prd}}organizacoes",
+							"host": [
+								"{{base_url_prd}}organizacoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"razao\": \"Banco de Alimentos de Pelotas\",\r\n    \"telefone\": \"53111111111\",\r\n    \"endereco\": \"Rua W.\",\r\n    \"cep\": \"96065377\",\r\n    \"cidade\": \"Pelotas\",\r\n    \"estado\": \"RS\",\r\n    \"documento_tipo\": \"PJ\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_prd}}organizacoes/12",
+							"host": [
+								"{{base_url_prd}}organizacoes"
+							],
+							"path": [
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"razao\": \"Banco de Alimentos de Pelotas\",\r\n    \"telefone\": \"53111111111\",\r\n    \"endereco\": \"Rua W.\",\r\n    \"cep\": \"96065377\",\r\n    \"cidade\": \"Pelotas\",\r\n    \"estado\": \"RS\",\r\n    \"documento_tipo\": \"PJ\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url_prd}}organizacoes/12",
+							"host": [
+								"{{base_url_prd}}organizacoes"
+							],
+							"path": [
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "TOKEN",
+			"value": ""
+		},
+		{
+			"key": "base_url_prd",
+			"value": "https://boaacao-353cf0159c3a.herokuapp.com/api/v1/"
+		},
+		{
+			"key": "base_url_tst",
+			"value": "http://localhost/api/v1/"
+		}
+	]
+}

@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\Item;
 use App\Services\ItemUploadService;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ItemRepository
@@ -20,18 +21,17 @@ class ItemRepository
             DB::beginTransaction();
             $novoItem->save();
             if (isset($itemData['imagem'])) {
-                $itemData['imagem'] = ItemUploadService::handleUploadFile($itemData['imagem']);
-                if (!$itemData['imagem'])
-                    throw new Exception("Erro ao salvar item com imagem!!");
+                $uploadedImage = ItemUploadService::handleUploadFile($itemData['imagem']);
 
                 $novoItem->media()->create([
-                    'source' => $itemData['imagem']
+                    'source' => $uploadedImage['url'],
+                    'public_id'=> $uploadedImage['public_id']
                 ]);
             }
 
             if (isset($itemData['video'])) {
                 $novoItem->media()->create([
-                    'source' => $novoItem['video']
+                    'source' => $itemData['video']
                 ]);
             }
             $novoItem->load('media');

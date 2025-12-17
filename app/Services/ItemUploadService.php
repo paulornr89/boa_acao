@@ -2,9 +2,6 @@
 
 namespace App\Services;
 
-use App\Http\Requests\ItemStoreRequest;
-use App\Http\Requests\ItemUpdateRequest;
-use App\Models\Item;
 use Exception;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -13,13 +10,20 @@ class ItemUploadService
 {
     private static $path = 'itens/';
 
-    public static function handleUploadFile(UploadedFile $itemImage): string | null
+    public static function handleUploadFile(UploadedFile $itemImage): array | null
     {
-        $hashedFileName = $itemImage->hashName();
-        if (!$itemImage->store(self::$path, 'public'))
-            throw new Exception("Erro ao salvar imagem do item!!");
-        if(!Storage::disk('public')->exists(self::$path.$hashedFileName))
-            return null;
-        return $hashedFileName;
+        $hashFilename = $itemImage->hashName();
+        $result = Storage::putFile(self::$path, $itemImage);
+
+        if (!$result)
+            throw new Exception("Erro ao salvar imagem do produto!!");
+
+        $public_id = self::$path."/$hashFilename";
+        $url = Storage::url($public_id);
+
+        if (!$url)
+            throw new Exception("Erro ao salvar imagem $public_id em Cloudnary!!");
+
+        return compact('url','public_id');
     }
-  }
+}
