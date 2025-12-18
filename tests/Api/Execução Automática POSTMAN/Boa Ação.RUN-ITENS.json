@@ -1,0 +1,198 @@
+{
+	"id": "fd6478d4-122b-49d9-9853-693356961e46",
+	"name": "Boa Ação",
+	"timestamp": "2025-12-18T17:26:53.311Z",
+	"collection_id": "15599413-d50d09d3-12ab-4428-b138-a413478c1045",
+	"folder_id": 0,
+	"environment_id": "15599413-fd84a32c-0bc8-4a7d-b8f6-f49c563b7562",
+	"totalPass": 0,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-12-18T17:26:41.333Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "702e715f-1726-4d44-bbb4-1af89861e2fc",
+			"name": "INDEX ITENS",
+			"url": "https://boaacao-353cf0159c3a.herokuapp.com/api/v1/itens",
+			"time": 8250,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				8250
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c55fd9eb-35df-41b3-8949-9e9c5336e33a",
+			"name": "SHOW ITENS",
+			"url": "https://boaacao-353cf0159c3a.herokuapp.com/api/v1/itens/51",
+			"time": 152,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				152
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "489431fb-0a63-4ae8-bf2d-e7f1fae08508",
+			"name": "LOGIN",
+			"url": "https://boaacao-353cf0159c3a.herokuapp.com/api/v1/tokens/login",
+			"time": 413,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				413
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ca103ef6-8218-4649-b47e-ef4ab4b15e32",
+			"name": "STORE STORE ITENS",
+			"url": "https://boaacao-353cf0159c3a.herokuapp.com/api/v1/itens",
+			"time": 179,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				179
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "40c79200-af0f-4cf5-8e7f-1bc49845daea",
+			"name": "STORE COM IMAGEM ITENS",
+			"url": "https://boaacao-353cf0159c3a.herokuapp.com/api/v1/itens",
+			"time": 961,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				961
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "127b1b7e-a48a-4239-a27d-1f74513c5c29",
+			"name": "UPDATE ITENS",
+			"url": "https://boaacao-353cf0159c3a.herokuapp.com/api/v1/itens/50",
+			"time": 173,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				173
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "4cb6f900-ea5b-4762-ae08-09c4e5ed37f6",
+			"name": "DELETE ITENS",
+			"url": "https://boaacao-353cf0159c3a.herokuapp.com/api/v1/itens/50",
+			"time": 168,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				168
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "9326f95a-e8ee-441b-aafa-339b1a25c425",
+			"name": "LOGOUT",
+			"url": "https://boaacao-353cf0159c3a.herokuapp.com/api/v1/tokens/logout",
+			"time": 165,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				165
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 10461,
+	"collection": {
+		"requests": [
+			{
+				"id": "702e715f-1726-4d44-bbb4-1af89861e2fc",
+				"method": "GET"
+			},
+			{
+				"id": "c55fd9eb-35df-41b3-8949-9e9c5336e33a",
+				"method": "GET"
+			},
+			{
+				"id": "489431fb-0a63-4ae8-bf2d-e7f1fae08508",
+				"method": "POST"
+			},
+			{
+				"id": "ca103ef6-8218-4649-b47e-ef4ab4b15e32",
+				"method": "POST"
+			},
+			{
+				"id": "40c79200-af0f-4cf5-8e7f-1bc49845daea",
+				"method": "POST"
+			},
+			{
+				"id": "127b1b7e-a48a-4239-a27d-1f74513c5c29",
+				"method": "PUT"
+			},
+			{
+				"id": "4cb6f900-ea5b-4762-ae08-09c4e5ed37f6",
+				"method": "DELETE"
+			},
+			{
+				"id": "9326f95a-e8ee-441b-aafa-339b1a25c425",
+				"method": "POST"
+			}
+		]
+	}
+}
