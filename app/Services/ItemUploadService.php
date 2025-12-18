@@ -12,13 +12,14 @@ class ItemUploadService
 
     public static function handleUploadFile(UploadedFile $itemImage): array | null
     {
-        $hashFilename = $itemImage->hashName();
-        $result = Storage::putFile(self::$path, $itemImage);
+        $public_id = Storage::putFile(self::$path, $itemImage);
 
-        if (!$result)
+        // Verifica se deu certo
+        if (!$public_id) { 
             throw new Exception("Erro ao salvar imagem do produto!!");
+        }
 
-        $public_id = self::$path."/$hashFilename";
+        // ✅ MUDANÇA 2: Agora pedimos a URL baseada no ID correto que recebemos acima
         $url = Storage::url($public_id);
 
         if (!$url)
