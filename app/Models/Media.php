@@ -10,7 +10,7 @@ class Media extends Model
 {
     /** @use HasFactory<\Database\Factories\MediaFactory> */
     use HasFactory;
-    protected $fillable = ['source', 'type'];
+    protected $fillable = ['source', 'type', 'public_id'];
 
     public function model():MorphTo {
         return $this->morphTo();

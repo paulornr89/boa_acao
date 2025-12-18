@@ -26,4 +26,18 @@ class ItemUploadService
 
         return compact('url','public_id');
     }
+
+    public static function deleteFile(?string $public_id = null): bool
+{
+    // Se for nulo ou vazio, não faz nada e retorna falso
+    if (!$public_id) {
+        return false;
+    }
+
+    if (Storage::disk('cloudinary')->exists($public_id)) {
+        return Storage::disk('cloudinary')->delete($public_id);
+    }
+
+    return false;
+}
 }
