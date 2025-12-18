@@ -17,16 +17,7 @@ class ItemResource extends JsonResource
     {
         return [
             ...parent::toArray($request),
-            'media' => $this->whenLoaded('media',
-                fn() => $this->media->map(
-                    function ($media) {
-                        $media->source = $media->type == 'image'
-                            ? asset(Storage::url('itens/' . $media->source))
-                            : $media->source;
-                        return $media;
-                    }
-                )
-            )
+            'media' => $this->whenLoaded('media', $this->media)
         ];
     }
 }
